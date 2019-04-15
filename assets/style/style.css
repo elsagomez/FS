@@ -1,0 +1,124 @@
+html, body{
+	height:100%;
+	font-family: 'Fira Sans', sans-serif;
+
+}
+
+p{
+	font-size: 16px;
+}
+
+.left-col{
+	height: 100%;
+	background-color: #002b7c;
+}
+
+.instructions{
+	color: white;
+}
+
+
+#logo{
+	width: 235px;
+	height: auto;
+	border-radius: 5pt;
+	padding-top: 20px;
+	/*margin-left: -20px;*/
+}
+
+
+#building2{
+	width: 800px;
+}
+
+.spot{
+	position:absolute;
+	width:50px;
+	height:50px;
+	border-radius: 25px;
+	background: white;
+	border: black 4px solid;
+	cursor: pointer;
+/*	transition: ;*/
+}
+
+#bspace-spot1{
+/*Stairwells*/
+	top: 50%;
+	left: 52%;
+}
+#bspace-spot2{
+/*Back of the House*/
+	top: 73%;
+	left: 52%;
+}
+#bspace-spot3{
+	top: 73%;
+/*	Common Areas*/
+	left: 82%;
+}
+#bspace-spot4{
+	/*Mechanical Rooms*/
+	top: 10%;
+	left: 52%;
+}
+
+#bspace-spot5{
+	/*Mechanical Rooms*/
+	top: 20%;
+	left: 32%;
+}
+
+.box{
+	padding: 20,0px,20,0px;
+}
+
+.left-buttons{
+	margin-left: 100px;	
+}
+
+
+#myVideo {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(2, 41, 115, .5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Style the button used to pause/play the video */
+.myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #ffa726;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myBtn:hover {
+    background: #ddd;
+    color: black;
+}
+
+#map {
+    height: 720px;
+    margin-left: none;
+    margin-right: none;
+    width: auto;
+    position: fixed;
+    text-align: center;
+}
+
+.in-in{
+	width: 600px;
+}

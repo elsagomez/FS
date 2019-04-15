@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DVM Industries - FS Service</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="../assets/style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Montserrat" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    
+</head>
+<body>
+
+<div class="col-md-4 left-col">
+    <br><br>
+<img src="../assets/style/images/dvmlogo.png" href="../index.html" id="logo" class="center-block">
+<br><br>
+<a href="../index.html" class="btn btn-default btn-custom center-block myBtn">Go back</a>  
+<br>
+<h1 class="instructions"> VFD Savings Calculator</h1>
+<hr>
+<h4 class="instructions">A Variable Frequency Drive is a type of motor controller that drives an electric motor by varying the frequency and voltage supplied to the electric motor. </h4>
+<br>
+<h4 class="instructions">If you have an application that does not need to be run at full speed, then you can cut down energy costs by controlling the mtor with a VFD, which will allow you to match he speed of the motor-driven equipment to the load requirement</h4>
+<br> <br>
+
+</div>
+
+<!-- Edificio y circulitos -->
+<div class="col-md-6 col-md-offset-1">
+  
+    <div class="row text-center">
+   <h1><b>Fill in the fields below and click RUN</b></h1>
+   <br>
+</div>
+   <form id="vfdform" class="needs-validation novalidate">
+    <div class="row">
+        <div class="col-xs-6 form-group">
+            <label>Motor Horsepower</label>
+            <input id="hp" type="number" class="form-control" type="text"/>
+        </div>
+        <div class="col-xs-6 form-group">
+            <label>Cost of kWh (electricity)</label>
+            <input id="kwh-cost" type="number" step="0.01" min="0" max="10" class="form-control" type="text"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 form-group">
+            <label>Total hours of operation</label>
+            <input id="hours" type="number" class="form-control" type="text"/>
+                </div>
+             
+        <div class="col-xs-6 form-group">
+            <label>Present method of capacity</label>
+            <select id="method" class="form-control">
+                <option value="0">Select a method</option>
+                <optgroup label="Fans at 60% of max flow">
+                <option value="Inlet Guide Vane" data-ratio="0.62" data-vfdr="0.28">Inlet Guide Vane</option>
+                <option value="Outlet Damper" data-ratio="0.88" data-vfdr="0.28">Outlet Damper</option>
+                <option value="Fan Curve" data-ratio="0.88" data-vfdr="0.28">Fan Curve</option>
+                <option value="Bypass Damper" data-ratio="1" data-vfdr="0.28">Bypass Damper</option>
+                </optgroup>
+                <optgroup label="Pumps at 70% of max flow">
+                <option value="Discharge Valve" data-ratio="0.94" data-vfdr="0.4">Discharge Valve</option>
+                <option value="Bypass Valve" data-ratio="1" data-vfdr="0.4">Bypass Valve</option>
+                <option value="No Control" data-ratio="1" data-vfdr="0.4">No control</option>
+                </optgroup>
+
+
+           </select>
+        </div>
+   
+        <br>    
+        <div class="text-center">
+         <button id="submit" type="submit" class="myBtn btn btn-primary btn-lg">RUN Calculation</button>
+         <button type="reset" class="btn btn-danger btn-lg" value="Reset">Reset</button>
+     </div>
+      </div>
+ </form>
+ <div class="row">
+    <table class="table">
+        <thead>
+            <h3><b>VFD Energy Savings Results</b></h3>
+        </thead>
+    <tbody>
+        <tr class="bg-primary">
+            <td class="align-middle">Annual energy savings</td>
+            <td id="annual-savings"></td>
+        </tr>
+           <tr>
+            <td>Annual energy consumption with existing method control</td>
+            <td id="current-consumption"></td>
+        </tr>
+           <tr class="bg-primary">
+            <td class="align-middle">Annual energy consumption with VFD</td>
+            <td id="vfd-consumption"></td>
+        </tr>
+        </tr>
+           <tr>
+            <td class="align-middle">Annual energy savings percentage</td>
+            <td id="savings-percent"></td>
+        </tr>
+        
+           <tr class="bg-primary">
+            <td class="align-middle">Co2 Reduction</td>
+            <td id="co-red"></td>
+        </tr>
+    </tbody>
+
+    </table>
+
+    <div class="text-center">
+       <button type="button" id="enviar" class="btn btn-warning center-block btn-lg" data-toggle="modal" data-target="#envio">Send me the results</button>
+     </div>
+    </div>
+
+</div>
+</div>
+
+
+<!-- Aqui siguen los resultados -->
+
+<!-- Modal de la forma para envio de resultados -->
+
+<div class="modal fade" id="envio" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel"><b>Send me the results</b></h2>
+      </div>
+      <div class="modal-body">
+
+<form accept-charset="UTF-8" action="https://lp379.infusionsoft.com/app/form/process/a943bb689af80b58d604a4f08004e1af" class="infusion-form" id="inf_form_a943bb689af80b58d604a4f08004e1af" method="POST">
+    <input name="inf_form_xid" type="hidden" value="a943bb689af80b58d604a4f08004e1af" />
+    <input name="inf_form_name" type="hidden" value="Web Form submitted" />
+    <input name="infusionsoft_version" type="hidden" value="1.69.0.43832" />
+
+
+    <div class="row">
+     <div class="col-xs-6 form-group">
+
+    <div class="infusion-field">
+        <label for="inf_field_FirstName">First Name *</label>
+        <input class="infusion-field-input" id="inf_field_FirstName" name="inf_field_FirstName" placeholder="First Name *" type="text" />
+    </div>
+</div>
+
+<div class="col-xs-6 form-group">
+    <div class="infusion-field">
+        <label for="inf_field_Email">Email *</label>
+        <input class="infusion-field-input" id="inf_field_Email" name="inf_field_Email" placeholder="Email *" type="text" />
+    </div>
+</div>
+</div>
+
+ <div class="row">
+    <div class="col-xs-6 form-group">
+     <div class="infusion-field">
+        <label for="inf_custom_motorhp">Motor Horsepower</label>
+        <input class="infusion-field-input" id="inf_custom_motorhp" readonly="readonly" name="inf_custom_motorhp" placeholder="Motor Horsepower" type="text" />
+    </div>
+    </div>
+
+     <!--        <label>Motor Horsepower</label>
+            <input id="hp1" type="number" class="form-control" type="text"/>
+        </div> -->
+        <div class="col-xs-6 form-group">
+            <div class="infusion-field">
+        <label for="inf_custom_kwhcost">Cost of electricity</label>
+        <input  class="infusion-field-input" id="inf_custom_kwhcost" readonly="readonly" name="inf_custom_kwhcost" placeholder="Cost of electricity" type="text" />
+    </div>
+            <!-- <label>Cost of kWh (electricity)</label>
+            <input id="kwh-cost1" type="number" step="0.01" min="0" max="10" class="form-control" type="text"/> -->
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-6 form-group">
+    <div class="infusion-field">
+        <label for="inf_custom_hours">Hours of Operation</label>
+        <input class="infusion-field-input" id="inf_custom_hours" readonly="readonly" name="inf_custom_hours" placeholder="Hours of Operation" type="text" />
+    </div>
+</div>
+
+<div class="col-xs-6 form-group">
+    <div class="infusion-field">
+        <label for="inf_custom_method" style="visibility: hidden">Present method of capacity</label>
+        <div class="infusion-field-input-container">
+            <select id="inf_custom_method" style="visibility: hidden" name="inf_custom_method">
+                <option value="">Please select one</option>
+                <option value="Inlet Guide Vane" data-ratio="0.62" data-vfdr="0.28">Inlet Guide Vane</option>
+                <option value="Outlet Damper" data-ratio="0.88" data-vfdr="0.28">Outlet Damper</option>
+                <option value="Fan Curve" data-ratio="0.88" data-vfdr="0.28">Fan Curve</option>
+                <option value="Bypass Damper" data-ratio="1" data-vfdr="0.28">Bypass Damper</option>
+                <option value="Discharge Valve" data-ratio="0.94" data-vfdr="0.4">Discharge Valve</option>
+                <option value="Bypass Valve" data-ratio="1" data-vfdr="0.4">Bypass Valve</option>
+                <option value="No Control" data-ratio="1" data-vfdr="0.4">No Control</option>
+            </select>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row">
+        <div class="col-xs-6 form-group">
+<div class="infusion-field">
+        <label for="inf_custom_vfdsavings">Annual energy savings</label>
+        <input class="infusion-field-input" id="inf_custom_vfdsavings" readonly="readonly" name="inf_custom_vfdsavings" placeholder="Annual energy savings" type="text" />
+    </div>
+        </div>
+         <div class="col-xs-6 form-group">
+
+<div class="infusion-field">
+        <label for="inf_custom_percentage">Energy savings percentage</label>
+        <input class="infusion-field-input" id="inf_custom_percentage" readonly="readonly" name="inf_custom_percentage" placeholder="Energy savings percentage" type="text" />
+    </div>
+
+</div>
+</div>
+
+<div class="row">
+        <div class="col-xs-6 form-group">
+<div class="infusion-field">
+        <label for="inf_custom_existingconsumption">Existing consumption</label>
+        <input class="infusion-field-input" id="inf_custom_existingconsumption" readonly="readonly" name="inf_custom_existingconsumption" placeholder="Existing consumption" type="text" />
+    </div>
+    
+</div>
+
+ <div class="col-xs-6 form-group">
+     <div class="infusion-field">
+        <label for="inf_custom_vfdconsumption">Consumption with VFD</label>
+        <input class="infusion-field-input" id="inf_custom_vfdconsumption" readonly="readonly" name="inf_custom_vfdconsumption" placeholder="Consumption with VFD" type="text" />
+    </div>
+</div>
+</div>
+
+<div class="row">
+ <div class="col-xs-6 form-group">
+    <div class="infusion-field">
+        <label for="inf_custom_co2reduction">CO2 reduction</label>
+        <input class="infusion-field-input" id="inf_custom_co2reduction" readonly="readonly" name="inf_custom_co2reduction" placeholder="CO2 reduction" type="text" />
+    </div>
+</div>
+</div>
+
+    <div>
+        <div>&nbsp;</div>
+    </div>
+
+      <div class="infusion-submit text-right">
+        <button type="submit" class="myBtn btn btn-primary btn-lg">Send NOW</button>
+    </div>
+</form>
+
+           <!--  <label>Total hours of operation</label>
+            <input id="hours1" type="number" class="form-control" type="text"/>
+                </div> -->
+             
+<!--         <div class="col-xs-6 form-group">
+            <label>Present method of capacity</label>
+            <select id="method1" class="form-control">
+                <option value="0">Select a method</option>
+                <optgroup label="Fans at 60% of max flow">
+                <option data-ratio="0.62" data-vfdr="0.28">Inlet Guide Vane</option>
+                <option data-ratio="0.88" data-vfdr="0.28">Outlet Damper</option>
+                <option data-ratio="0.88" data-vfdr="0.28">Fan Curve</option>
+                <option data-ratio="1" data-vfdr="0.28">Bypass Damper</option>
+                </optgroup>
+                <optgroup label="Pumps at 70% of max flow">
+                <option data-ratio="0.94" data-vfdr="0.4">Discharge Valve</option>
+                <option data-ratio="1" data-vfdr="0.4">Bypass Valve</option>
+                <option data-ratio="1" data-vfdr="0.4">No control</option>
+                </optgroup>
+
+            </select>
+        </div> -->
+<!--    
+        <br>    
+        <div class="text-center">
+         <button id="submit" type="submit" class="myBtn btn btn-primary btn-lg">Send Results</button>
+       
+     </div>
+      </div>
+ </form> -->
+
+ <script type="text/javascript" src="https://lp379.infusionsoft.com/app/webTracking/getTrackingCode"></script>
+<script type="text/javascript" src="https://lp379.infusionsoft.com/app/timezone/timezoneInputJs?xid=a943bb689af80b58d604a4f08004e1af"></script>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/scripts/savings.js"></script>
+
+
+</body>
+</html>

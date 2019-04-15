@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DVM Industries - FS Service</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Montserrat" rel="stylesheet">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="assets/style/style.css">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+</head>
+<body>
+
+<div class="video-container">
+<video autoplay muted loop id="myVideo">
+  <source src="assets/style/images/video.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="content">
+  <h1>Please select one: </h1>
+   <!-- Use a button to pause/play the video with JavaScript -->
+
+  <button class="hidden" id="myBtn" onclick="myFunction()">Pause</button>
+  <a href="pages/FS-map.html" class="btn btn-default btn-custom myBtn">First Service Projects</a> 
+  <a href="pages/building-info.html" class="btn btn-default btn-custom myBtn" >DVM Services</a> 
+   <a href="pages/multi-savings.html" class="btn btn-default btn-custom myBtn">VFD Calculator</a>
+   <a href="pages/contact.html" class="btn btn-default btn-custom myBtn">Get in touch!</a>
+
+</div>
+
+<script>
+// Get the video
+var video = document.getElementById("myVideo");
+
+// Get the button
+var btn = document.getElementById("myBtn");
+
+// Pause and play the video, and change the button text
+function myFunction() {
+    if (video.paused) {
+        video.play();
+        btn.innerHTML = "Pause";
+    } else {
+        video.pause();
+        btn.innerHTML = "Play";
+    }
+}
+</script>
+
+
+</body>
+</html>
